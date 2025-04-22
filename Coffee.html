@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Section - Bean Boutique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #333;
+            background-image: url('https://cdna.artstation.com/p/assets/images/images/068/714/092/large/erich-lux-swartz-erichluxs-caferender-01.jpg?1698460900');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: transparent;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .header.scrolled {
+            background-color: rgba(51, 51, 51, 0.9);
+        }
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 20px;
+            position: relative;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #f4a261;
+            color: #333;
+        }
+        .icon {
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 20px;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        .icon:hover {
+            color: #f4a261;
+        }
+        .profile-icon {
+            background-color: #f4a261;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown-parent {
+            position: relative;
+        }
+        .dropdown-parent > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dropdown-parent > a i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown-parent:hover > a i {
+            transform: rotate(180deg);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(68, 68, 68, 0.9);
+            border-radius: 4px;
+            padding: 10px 0;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown li {
+            margin: 0;
+            padding: 0;
+        }
+        .dropdown a {
+            padding: 10px 16px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+        .dropdown a:hover {
+            background-color: #f4a261;
+            color: #333;
+        }
+        .nav-links li:hover .dropdown {
+            display: block;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+        .main-content {
+            padding: 100px 10% 20px;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #f4a261;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #e76f51;
+        }
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .coffee-item {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .coffee-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .coffee-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .coffee-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .coffee-item p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        .coffee-item .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f4a261;
+            margin-bottom: 10px;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .rating .star {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .rating .star.active {
+            color: #f4a261;
+        }
+        .add-to-cart {
+            background-color: #f4a261;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart:hover {
+            background-color: #e76f51;
+        }
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f4a261;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+        .floating-cart .icon {
+            margin: 0;
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #e76f51;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .cart-notification {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1001;
+            display: none;
+            animation: slideIn 0.5s forwards;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                height: 100vh;
+                width: 100%;
+                background-color: rgba(51, 51, 51, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in;
+            }
+            .nav-links li {
+                margin: 20px 0;
+            }
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            .dropdown-parent > a i {
+                display: none;
+            }
+            .dropdown {
+                position: static;
+                display: none;
+                background-color: transparent;
+                box-shadow: none;
+                padding-left: 20px;
+            }
+            .dropdown a {
+                padding: 8px 0;
+            }
+            .dropdown.active {
+                display: block;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .search-bar input {
+                width: 100%;
+            }
+            .coffee-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        .footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 40px 10%;
+            text-align: center;
+            color: #fff;
+        }
+        .footer .social-icons {
+            margin-bottom: 20px;
+        }
+        .footer .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .footer .social-icons a:hover {
+            color: #f4a261;
+        }
+        .footer p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">Bean Boutique</a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown-parent">
+                    <a href="#Shop">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="Coffee.html">Coffee Section</a></li>
+                        <li><a href="coffee-equipment.html">Coffee Equipment</a></li>
+                        <li><a href="Special-offer.html">Special Offers</a></li>
+                    </ul>
+                </li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Event.html">Event</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Content.html">Contact</a></li>
+                <li>
+                    <a href="Profile.html" class="icon profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1>Our Coffee Selection</h1>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for coffee...">
+            <button onclick="searchCoffee()">Search</button>
+        </div>
+
+        <div class="coffee-grid" id="coffeeGrid">
+            <!-- Coffee Item 1 -->
+            <div class="coffee-item">
+                <img src="./website photo/Espresso.avif" alt="Espresso">
+                <h3>Espresso</h3>
+                <p>A strong and bold coffee made by forcing hot water through finely-ground coffee beans.</p>
+                <div class="price">$3.50</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Espresso', 3.50, './website photo/Espresso.avif')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 2 -->
+            <div class="coffee-item">
+                <img src="./website photo/Cappuccino.jpg" alt="Cappuccino">
+                <h3>Cappuccino</h3>
+                <p>A classic Italian coffee made with espresso, steamed milk, and a layer of frothy milk foam.</p>
+                <div class="price">$4.00</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Cappuccino', 4.00, './website photo/Cappuccino.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 3 -->
+            <div class="coffee-item">
+                <img src="./website photo/latte.jpg" alt="Latte">
+                <h3>Latte</h3>
+                <p>A creamy coffee made with espresso and steamed milk, topped with a small amount of foam.</p>
+                <div class="price">$4.25</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Latte', 4.25, './website photo/latte.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 4 -->
+            <div class="coffee-item">
+                <img src="./website photo/Americano.jpg" alt="Americano">
+                <h3>Americano</h3>
+                <p>A diluted espresso with hot water, giving it a similar strength to drip coffee.</p>
+                <div class="price">$3.00</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Americano', 3.00, './website photo/Americano.jpg')">Add to Cart</button>
+            </div>
+            
+            <!-- Coffee Item 5 -->
+            <div class="coffee-item">
+                <img src="./website photo/Mocha.jpg" alt="Mocha">
+                <h3>Mocha</h3>
+                <p>A delicious blend of espresso, steamed milk, and chocolate, topped with whipped cream.</p>
+                <div class="price">$4.50</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Mocha', 4.50, './website photo/Mocha.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 6 -->
+            <div class="coffee-item">
+                <img src="./website photo/Macchiato.jpg" alt="Macchiato">
+                <h3>Macchiato</h3>
+                <p>An espresso with a small amount of steamed milk and foam, creating a bold and creamy flavor.</p>
+                <div class="price">$3.75</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Macchiato', 3.75, './website photo/Macchiato.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 7 -->
+            <div class="coffee-item">
+                <img src="./website photo/Flat White.avif" alt="Flat White">
+                <h3>Flat White</h3>
+                <p>A smooth coffee made with espresso and velvety steamed milk, popular in Australia and New Zealand.</p>
+                <div class="price">$4.25</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Flat White', 4.25, './website photo/Flat White.avif')">Add to Cart</button>
+            </div>
+            
+            <!-- Coffee Item 8 -->
+            <div class="coffee-item">
+                <img src="./website photo/Affogato.jpg" alt="Affogato">
+                <h3>Affogato</h3>
+                <p>A delightful dessert coffee made by pouring a shot of hot espresso over a scoop of vanilla ice cream.</p>
+                <div class="price">$5.00</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Affogato', 5.00, './website photo/Affogato.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 9 -->
+            <div class="coffee-item">
+                <img src="./website photo/Turkish Coffee.avif" alt="Turkish Coffee">
+                <h3>Turkish Coffee</h3>
+                <p>A traditional method of brewing coffee using finely ground coffee beans, boiled in a pot with water and sugar.</p>
+                <div class="price">$4.50</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Turkish Coffee', 4.50, './website photo/Turkish Coffee.avif')">Add to Cart</button>
+            </div>
+
+            <!-- Coffee Item 10 -->
+            <div class="coffee-item">
+                <img src="./website photo/Cold Brew.jpg" alt="Cold Brew">
+                <h3>Cold Brew</h3>
+                <p>A smooth and refreshing coffee made by steeping coffee grounds in cold water for an extended period.</p>
+                <div class="price">$4.00</div>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Cold Brew', 4.00, './website photo/Cold Brew.jpg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-notification" id="cartNotification">
+        Item added to cart!
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2023 Bean Boutique. All rights reserved.</p>
+        <p>Contact us: info@cafeBean Boutique.com | +123 456 7890</p>
+    </footer>
+
+    <div class="floating-cart" onclick="window.location.href='cart.html'">
+        <div class="icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="floatingCartCount">0</span>
+        </div>
+    </div>
+
+    <script>
+     
+        // Add to Cart Functionality
+        function addToCart(itemName, itemPrice, itemImage) {
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => item.name === itemName);
+            
+            if (existingItemIndex !== -1) {
+                // Item exists, increment quantity
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                // Item doesn't exist, add new item
+                cart.push({
+                    name: itemName,
+                    price: itemPrice,
+                    image: itemImage,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show notification
+            showNotification();
+        }
+
+        // View Cart Functionality
+        function viewCart() {
+            window.location.href = 'cart.html';
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('.header');
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const dropdownParents = document.querySelectorAll('.dropdown-parent');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                
+                // Toggle body overflow to prevent scrolling when menu is open
+                if (navLinks.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Mobile dropdown functionality
+        if (window.innerWidth <= 768) {
+            dropdownParents.forEach(parent => {
+                const link = parent.querySelector('a');
+                const dropdown = parent.querySelector('.dropdown');
+                
+                if (link && dropdown) {
+                    link.addEventListener('click', function(e) {
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                            dropdown.classList.remove('active');
+                        } else {
+                            // Close any other open dropdowns
+                            document.querySelectorAll('.dropdown').forEach(dd => {
+                                if (dd) {
+                                    dd.style.display = 'none';
+                                    dd.classList.remove('active');
+                                }
+                            });
+                            
+                            dropdown.style.display = 'block';
+                            dropdown.classList.add('active');
+                        }
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks) navLinks.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Search Functionality
+        function searchEquipment() {
+            const input = document.getElementById('searchInput');
+            const equipmentItems = document.querySelectorAll('.equipment-item');
+
+            if (input) {
+                const searchTerm = input.value.toLowerCase();
+                equipmentItems.forEach(item => {
+                    const equipmentName = item.querySelector('h3').textContent.toLowerCase();
+                    if (equipmentName.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            
+            // Add event listeners to all Add to Cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemName = this.getAttribute('data-name');
+                    const itemPrice = parseFloat(this.getAttribute('data-price'));
+                    const itemImage = this.getAttribute('data-image');
+                    
+                    addToCart(itemName, itemPrice, itemImage);
+                });
+            });
+        });
+        // Search Functionality
+        function searchCoffee() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const coffeeItems = document.querySelectorAll('.coffee-item');
+
+            coffeeItems.forEach(item => {
+                const coffeeName = item.querySelector('h3').textContent.toLowerCase();
+                if (coffeeName.includes(input)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers - Bean Boutique</title>
+    <!-- Google Font: Dancing Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/offer.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">Bean Boutique</a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="#Shop">Shop</a>
+                    <ul class="dropdown">
+                        <li><a href="Coffee.html">Coffee Section</a></li>
+                        <li><a href="coffee-equipment.html">Coffee Equipment</a></li>
+                        <li><a href="Special-offer.html">Special Offers</a></li>
+                    </ul>
+                </li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Event.html">Event</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Content.html">Contact</a></li>
+                <li>
+                    <a href="profile.html" class="icon profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Special Offers</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for offers...">
+            <button onclick="searchOffers()">Search</button>
+        </div>
+
+        <!-- Offers Grid -->
+        <div class="offers-grid" id="offersGrid">
+            <!-- Offer Item 1 -->
+            <div class="offer-item">
+                <div class="discount">20% OFF</div>
+                <img src="./website photo/Espresso Machine.jpg" alt="Espresso Machine">
+                <h3>Espresso Machine</h3>
+                <p>High-quality espresso machine for brewing the perfect shot of espresso.</p>
+                <p class="price"><del>$499.99</del> $399.99</p>
+                <button class="add-to-cart" onclick="addToCart('Espresso Machine', 399.99)">Add to Cart</button>
+            </div>
+
+            <!-- Offer Item 2 -->
+            <div class="offer-item">
+                <div class="discount">15% OFF</div>
+                <img src="./website photo/Coffee Grinder.webp" alt="Coffee Grinder">
+                <h3>Coffee Grinder</h3>
+                <p>Grind your coffee beans to perfection with this high-performance grinder.</p>
+                <p class="price"><del>$129.99</del> $110.49</p>
+                <button class="add-to-cart" onclick="addToCart('Coffee Grinder', 110.49)">Add to Cart</button>
+            </div>
+
+            <!-- Offer Item 3 -->
+            <div class="offer-item">
+                <div class="discount">10% OFF</div>
+                <img src="./website photo/French Press.webp" alt="French Press">
+                <h3>French Press</h3>
+                <p>Brew rich and flavorful coffee with this classic French press.</p>
+                <p class="price"><del>$39.99</del> $35.99</p>
+                <button class="add-to-cart" onclick="addToCart('French Press', 35.99)">Add to Cart</button>
+            </div>
+
+            <!-- Offer Item 4 -->
+            <div class="offer-item">
+                <div class="discount">25% OFF</div>
+                <img src="./website photo/Pour Over Kit.jpg" alt="Pour Over Kit">
+                <h3>Pour Over Kit</h3>
+                <p>Everything you need to make a perfect pour-over coffee at home.</p>
+                <p class="price"><del>$59.99</del> $44.99</p>
+                <button class="add-to-cart" onclick="addToCart('Pour Over Kit', 44.99)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2023 Bean Boutique. All rights reserved.</p>
+        <p>Contact us: info@cafeBean Boutique.com | +123 456 7890</p>
+    </footer>
+
+    <!-- Floating Cart Icon -->
+    <div class="floating-cart" onclick="window.location.href='cart.html'">
+        <div class="icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="floating-cart-count" class="cart-count">0</span>
+        </div>
+    </div>
+    <script src="./js/offer.js"></script>
+</body>
+</html>

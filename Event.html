@@ -1,0 +1,129 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events - Bean Boutiquet</title>
+        <!-- Google Font: Dancing Script -->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <link rel="stylesheet" href="./css/event.css">
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <a href="#">Bean Boutique</a>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li>
+                        <a href="#Shop">Shop</a>
+                        <ul class="dropdown">
+                            <li><a href="Coffee.html">Coffee Section</a></li>
+                            <li><a href="coffee-equipment.html">Coffee Equipment</a></li>
+                            <li><a href="Special-offer.html">Special Offers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Event.html">Event</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                    <li><a href="Content.html">Contact</a></li>
+                    <li>
+                        <a href="Profile.html" class="icon profile-icon">
+                            <i class="fas fa-user"></i> <!-- Font Awesome Profile Icon -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Upcoming Events</h1>
+
+            <!-- Events Grid -->
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/300" alt="Coffee Tasting">
+                    <h3>Coffee Tasting Night</h3>
+                    <p class="date">Date: October 15, 2023 | Time: 7:00 PM</p>
+                    <p class="location">Location: Cafe Delight, Main Hall</p>
+                    <p class="description">
+                        Join us for an evening of coffee tasting, where we'll explore unique flavors from around the world. Perfect for coffee enthusiasts!
+                    </p>
+                    <button class="btn" onclick="openModal('Coffee Tasting Night')">Register Now</button>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/300" alt="Live Music">
+                    <h3>Live Music Night</h3>
+                    <p class="date">Date: October 20, 2023 | Time: 8:00 PM</p>
+                    <p class="location">Location: Cafe Delight, Outdoor Patio</p>
+                    <p class="description">
+                        Enjoy a relaxing evening with live acoustic music, delicious coffee, and a cozy atmosphere. Bring your friends and unwind!
+                    </p>
+                    <button class="btn" onclick="openModal('Live Music Night')">Register Now</button>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/300" alt="Latte Art Workshop">
+                    <h3>Latte Art Workshop</h3>
+                    <p class="date">Date: October 25, 2023 | Time: 10:00 AM</p>
+                    <p class="location">Location: Cafe Delight, Workshop Room</p>
+                    <p class="description">
+                        Learn the art of creating beautiful latte designs from our expert baristas. No prior experience required!
+                    </p>
+                    <button class="btn" onclick="openModal('Latte Art Workshop')">Register Now</button>
+                </div>
+            </div>
+        </div>
+    <!-- Registration Modal -->
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Register for Event</h2>
+    
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+    
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LdIjSArAAAAAMl7EU-cdOo6QSUeqN9VhH4ZA_2v"></div>
+    
+        <button onclick="submitRegistration()">Submit</button>
+        </div>
+    </div>
+    
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2023 Bean Boutique. All rights reserved.</p>
+            <p>Contact us: info@cafeBean Boutique.com | +123 456 7890</p>
+        </footer>
+
+        <!-- Floating Cart Icon -->
+        <div class="floating-cart">
+            <a href="cart.html" class="icon">
+                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome Cart Icon -->
+            </a>
+        </div>
+
+        <script src="./js/event.js"></script>
+    </body>
+    </html>

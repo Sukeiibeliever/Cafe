@@ -1,0 +1,160 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cafe Website</title>
+        <!-- Google Font: Dancing Script -->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- Swiper JS CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <a href="#">Cafe Delight</a>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#Shop">Shop</a>
+                        <ul class="dropdown">
+                            <li><a href="Coffee.html">Coffee Section</a></li>
+                            <li><a href="coffee-equipment.html">Coffee Equipment</a></li>
+                            <li><a href="Special-offer.html">Special Offers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Event.html">Event</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                    <li><a href="Coffee.html">Contact</a></li>
+                    <li>
+                        <a href="Profile.html" class="icon profile-icon">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </header>
+
+        <!-- Hero Section with Slider -->
+        <section class="hero">
+            <div class="swiper heroSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 - Featured Coffee -->
+                    <div class="swiper-slide">
+                        <img src="./website photo/Our Signature Blend.avif" alt="Specialty Coffee">
+                        <div class="featured-tag">Featured</div>
+                        <div class="hero-content">
+                            <h1>Our Signature Blend</h1>
+                            <p>Experience the rich, smooth taste of our award-winning house blend</p>
+                            <button class="btn">Order Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 - Seasonal Offer -->
+                    <div class="swiper-slide">
+                        <img src="./website photo/Autumn Specials.avif" alt="Seasonal Drinks">
+                        <div class="featured-tag">Seasonal</div>
+                        <div class="hero-content">
+                            <h1>Autumn Specials</h1>
+                            <p>Try our limited edition pumpkin spice and caramel apple lattes</p>
+                            <button class="btn">View Seasonal Menu</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 - New Equipment -->
+                    <div class="swiper-slide">
+                        <img src="./website photo/Premium Coffee Makers.webp" alt="Coffee Equipment">
+                        <div class="featured-tag">New Arrival</div>
+                        <div class="hero-content">
+                            <h1>Premium Coffee Makers</h1>
+                            <p>Upgrade your home brewing with our professional-grade equipment</p>
+                            <button class="btn">Shop Equipment</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>Our Shop</h2>
+            <div class="features-grid">
+                <a href="coffee.html" class="feature">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Coffee Section</h3>
+                    <p>Explore our wide range of specialty coffees from around the world.</p>
+                </a>
+                <a href="coffee-equipment.html" class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h3>Coffee Equipment</h3>
+                    <p>Find the best coffee-making tools and equipment for your home or cafe.</p>
+                </a>
+                <a href="Special-offer.html" class="feature">
+                    <i class="fas fa-tags"></i>
+                    <h3>Special Offers</h3>
+                    <p>Check out our exclusive deals and discounts on coffee and equipment.</p>
+                </a>
+            </div>
+        </section>
+        <!-- Weather Widget -->
+        <div class="weather-widget" id="weatherWidget">
+            <div class="weather-header">
+                <div class="weather-title">Current Weather</div>
+                <button class="refresh-weather" id="refreshWeather">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="weather-info">
+                <div class="weather-icon" id="weatherIcon">
+                    <i class="fas fa-question"></i>
+                </div>
+                <div class="weather-temp" id="weatherTemp">--°C</div>
+            </div>
+            <div class="weather-details">
+                <div id="weatherDescription">Loading...</div>
+                <div id="weatherLocation">Locating...</div>
+            </div>
+            <div class="weather-recommendation">
+                <div class="recommendation-title">Today's Special</div>
+                <div id="weatherRecommendation">Based on your local weather</div>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2023 Cafe Delight. All rights reserved.</p>
+            <p>Contact us: info@cafedelight.com | +123 456 7890</p>
+        </footer>
+
+        <!-- Floating Cart Icon -->
+        <div class="floating-cart">
+            <a href="cart.html" class="icon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
+    </html>

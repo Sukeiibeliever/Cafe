@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bean Boutique</title>
+    <!-- Google Font: Dancing Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/content.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="#">Bean Boutique</a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="#Shop">Shop</a>
+                    <ul class="dropdown">
+                        <li><a href="Coffee.html">Coffee Section</a></li>
+                        <li><a href="coffee-equipment.html">Coffee Equipment</a></li>
+                        <li><a href="Special-offer.html">Special Offers</a></li>
+                    </ul>
+                </li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Event.html">Event</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Content.html">Contact</a></li>
+                <li>
+                    <a href="Profile.html" class="icon profile-icon">
+                        <i class="fas fa-user"></i> <!-- Font Awesome Profile Icon -->
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Contact Us</h1>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="emailForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Viber API Button -->
+        <div>
+            <h2>Chat with Us on Viber</h2>
+            <button class="viber-button" onclick="openViber()">
+                <i class="fab fa-viber"></i> Chat on Viber
+            </button>
+        </div>
+
+        <!-- Google Maps with Shop Selector -->
+        <div class="map-container">
+            <h2>Our Locations</h2>
+            
+            <div class="shop-selector">
+                <label for="shop-select">Select a Location:</label>
+                <select id="shop-select" onchange="changeMap()">
+                    <option value="empire">Main Branch (Empire State Building)</option>
+                    <option value="central">Central Park Branch</option>
+                    <option value="brooklyn">Brooklyn Branch</option>
+                    <option value="queens">Queens Branch</option>
+                </select>
+            </div>
+            
+            <iframe id="shop-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.98784492416408!3d40.74844097138989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="jobs-section">
+            <h2>Join Our Team</h2>
+            <div class="job-listings">
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <h3>Barista</h3>
+                    <span class="job-type">Full-time</span>
+                    <p class="job-location">New York, NY</p>
+                    <p class="job-description">
+                        We're looking for passionate baristas to craft exceptional coffee experiences. 
+                        Training provided for the right candidates.
+                    </p>
+                    <button class="apply-btn" onclick="openApplicationForm('Barista')">Apply Now</button>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <h3>Pastry Chef</h3>
+                    <span class="job-type">Part-time</span>
+                    <p class="job-location">Brooklyn, NY</p>
+                    <p class="job-description">
+                        Join our baking team to create delicious pastries that complement our coffee offerings.
+                        Experience preferred but not required.
+                    </p>
+                    <button class="apply-btn" onclick="openApplicationForm('Pastry Chef')">Apply Now</button>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <h3>Cafe Manager</h3>
+                    <span class="job-type">Full-time</span>
+                    <p class="job-location">Queens, NY</p>
+                    <p class="job-description">
+                        Lead our team and ensure exceptional customer service. 
+                        2+ years of cafe management experience required.
+                    </p>
+                    <button class="apply-btn" onclick="openApplicationForm('Cafe Manager')">Apply Now</button>
+                </div>
+            </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2023 Bean Boutique. All rights reserved.</p>
+        <p>Contact us: info@cafeBean Boutique.com | +123 456 7890</p>
+    </footer>
+
+    <!-- Floating Cart Icon -->
+    <div class="floating-cart">
+        <a href="cart.html" class="icon">
+            <i class="fas fa-shopping-cart"></i> <!-- Font Awesome Cart Icon -->
+        </a>
+    </div>
+
+
+    <script src="content.js"></script>
+</body>
+</html>
